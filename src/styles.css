@@ -1,0 +1,160 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * N.O.U.R.I.S.H. design system — clinical, trustworthy, transparent.
+ * Ink-teal core with the official Nutri-Score A–E spectrum for grades and a
+ * deliberately separate amber/violet "personal flag" family so personalised
+ * warnings never read as part of the objective score.
+ */
+
+@theme inline {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+
+  --color-grade-a: var(--grade-a);
+  --color-grade-b: var(--grade-b);
+  --color-grade-c: var(--grade-c);
+  --color-grade-d: var(--grade-d);
+  --color-grade-e: var(--grade-e);
+  --color-grade-foreground: var(--grade-foreground);
+
+  --color-flag: var(--flag);
+  --color-flag-foreground: var(--flag-foreground);
+  --color-flag-soft: var(--flag-soft);
+  --color-flag-border: var(--flag-border);
+
+  --color-alert: var(--alert);
+  --color-alert-foreground: var(--alert-foreground);
+  --color-alert-soft: var(--alert-soft);
+
+  --color-risk-low: var(--risk-low);
+  --color-risk-mid: var(--risk-mid);
+  --color-risk-high: var(--risk-high);
+
+  --shadow-card: 0 1px 2px oklch(0.2 0.03 200 / 6%), 0 8px 24px -12px oklch(0.2 0.03 200 / 12%);
+  --shadow-lift: 0 2px 4px oklch(0.2 0.03 200 / 6%), 0 18px 40px -18px oklch(0.2 0.03 200 / 22%);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --background: oklch(0.985 0.006 190);
+  --foreground: oklch(0.22 0.028 220);
+  --surface: oklch(0.972 0.009 195);
+  --surface-strong: oklch(0.945 0.014 195);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.028 220);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.028 220);
+
+  --primary: oklch(0.44 0.083 195);
+  --primary-foreground: oklch(0.99 0.005 190);
+  --secondary: oklch(0.945 0.014 195);
+  --secondary-foreground: oklch(0.32 0.045 210);
+  --muted: oklch(0.955 0.01 195);
+  --muted-foreground: oklch(0.505 0.024 220);
+  --accent: oklch(0.93 0.032 190);
+  --accent-foreground: oklch(0.3 0.05 205);
+  --destructive: oklch(0.545 0.198 25);
+  --destructive-foreground: oklch(0.99 0.005 190);
+
+  --border: oklch(0.905 0.012 200);
+  --input: oklch(0.9 0.012 200);
+  --ring: oklch(0.55 0.08 195);
+
+  /* Official Nutri-Score spectrum */
+  --grade-a: oklch(0.55 0.155 148);
+  --grade-b: oklch(0.72 0.17 130);
+  --grade-c: oklch(0.83 0.16 88);
+  --grade-d: oklch(0.72 0.16 55);
+  --grade-e: oklch(0.57 0.19 30);
+  --grade-foreground: oklch(0.99 0.005 190);
+
+  /* Personalisation family — deliberately non-Nutri-Score hues */
+  --flag: oklch(0.48 0.16 295);
+  --flag-foreground: oklch(0.99 0.005 190);
+  --flag-soft: oklch(0.96 0.028 295);
+  --flag-border: oklch(0.83 0.07 295);
+
+  /* Stricter-standard alert family */
+  --alert: oklch(0.5 0.19 20);
+  --alert-foreground: oklch(0.99 0.005 190);
+  --alert-soft: oklch(0.965 0.028 25);
+
+  --risk-low: oklch(0.58 0.13 155);
+  --risk-mid: oklch(0.68 0.15 70);
+  --risk-high: oklch(0.53 0.19 22);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility card-base {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+}
+
+@utility label-caps {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
