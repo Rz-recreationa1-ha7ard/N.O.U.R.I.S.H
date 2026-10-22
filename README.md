@@ -62,15 +62,6 @@ Two health conditions (diabetes, hypertension) is enough to prove the personaliz
 
 If full ML (ingredient-text NOVA classifier) isn't feasible in the prototype timeline, mock it with the NOVA values already present in Open Food Facts data and clearly note in the demo that the ML classifier is the next build step, not yet live.
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/2c257a51-601b-4657-aec3-852a538cec55).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
