@@ -8,6 +8,7 @@ import { computeNutriScore } from "@/lib/nutriscore";
 import { CONDITION_LABEL, personalFlags, type Condition } from "@/lib/personalization";
 import { useProfile } from "@/lib/profile";
 import { OCRScannerModal } from "@/components/ocr-scanner-modal";
+import { BarcodeScannerModal } from "@/components/barcode-scanner-modal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -35,6 +36,7 @@ function Home() {
   const { profile, hydrated, save } = useProfile();
   const [query, setQuery] = useState("");
   const [isOcrOpen, setIsOcrOpen] = useState(false);
+  const [isBarcodeOpen, setIsBarcodeOpen] = useState(false);
   const [productList, setProductList] = useState<Product[]>(PRODUCTS);
 
   useEffect(() => {
@@ -78,6 +80,12 @@ function Home() {
           isOpen={isOcrOpen}
           onClose={() => setIsOcrOpen(false)}
           onProductCreated={() => setProductList(getAllProducts())}
+        />
+
+        <BarcodeScannerModal
+          isOpen={isBarcodeOpen}
+          onClose={() => setIsBarcodeOpen(false)}
+          onUseLabelScan={() => setIsOcrOpen(true)}
         />
 
         <section className="pt-10">
@@ -154,6 +162,13 @@ function Home() {
             />
             <button
               type="button"
+              onClick={() => setIsBarcodeOpen(true)}
+              className="flex shrink-0 items-center gap-1.5 border-l border-border pl-3 text-xs font-semibold text-primary hover:text-primary/80 transition-colors cursor-pointer"
+            >
+              <ScanLine className="h-4 w-4" /> Scan Barcode
+            </button>
+            <button
+              type="button"
               onClick={() => setIsOcrOpen(true)}
               className="flex shrink-0 items-center gap-1.5 border-l border-border pl-3 text-xs font-semibold text-primary hover:text-primary/80 transition-colors cursor-pointer"
             >
@@ -162,7 +177,7 @@ function Home() {
           </div>
           <p className="mt-2 px-1 text-xs text-muted-foreground">
             Prototype catalogue: {PRODUCTS.length} real Indian packaged products entered from labels
-            and Open Food Facts. Camera scanning is stubbed for the demo.
+            and Open Food Facts. Scan a barcode or a nutrition label to add more.
           </p>
 
           <ul className="mt-4 space-y-2.5">
