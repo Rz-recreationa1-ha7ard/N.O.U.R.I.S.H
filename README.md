@@ -1,4 +1,4 @@
-# Nourish Health Score
+# N.O.U.R.I.S.H
 
 What the app is
 
